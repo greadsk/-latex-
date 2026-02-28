@@ -1,0 +1,554 @@
+%%=======================================================================
+% !Mode:: "TeX:UTF-8"
+% !TEX program  = PdfLaTeX
+%%=======================================================================
+% 模板名称：thubeamer
+% 模板版本：V1.2
+% 模板作者：杨敬轩（Jingxuan Yang）
+% 联系作者：yangjx20@mails.tsinghua.edu.cn & yanglatex2e@gmail.com
+% 模板适用：清华大学风格 Beamer 模板
+% 模板编译：手动编译方法参看 README.md 或 thubeamer.pdf
+%          编译 beamer 之前必须编译说明文档：make doc 或双击 makedoc.bat
+%          编译说明文档同时分离出四个样式文件 *thubeamer.sty
+%          GNU make 工具：make beamer
+%          Windows 批处理脚本：双击 makebeamer.bat 自动编译 beamer
+%          更多编译细节详见说明文档：thubeamer.pdf
+% 更新时间：2023/11/27
+% 模板帮助：请**务必务必务必**阅读 thubeamer.pdf 说明文档，文档查看方法：
+%          下载模板文件夹里就有，如果是从 CTAN 上安装更新本模板，则通过
+%          cmd 命令行：texdoc thubeamer 查看文档
+%          推荐前往模板的 GitHub 仓库获取最新文件，地址：
+%          https://github.com/YangLaTeX/thubeamer
+%%=======================================================================
+
+% 设置文档类别为 <beamer>
+% \documentclass[aspectratio=169]{beamer} % 设置长宽比为 16:9
+\documentclass{beamer}
+
+% 使用 <thubeamer> 主题
+% 模板选项如下
+% (a.1) smoothbars: 页面顶端单行显示目录，默认选项
+\usetheme{thubeamer}
+
+% (a.2) sidebar: 页面左侧分栏显示目录
+% \usetheme[sidebar]{thubeamer}
+
+% (b) sectiontoc: 在每节（section）前显示目录，并高亮显示当前节，默认不显示
+
+% (c) subsectiontoc: 在每小节（subsection）前显示目录，并高亮显示当前节和当前小节，默认不显示
+
+% (d) en: 仅使用英文来制作 beamer，应用此选项后，汉字将全部无法编译
+
+% 图片存放路径
+\graphicspath{{figures/}}
+
+
+\logo{\includegraphics[height=0.07\textwidth]{logo.jpg}}
+\include{macros}
+
+
+
+% 封面信息，方括号内容是显示在左侧边栏的内容（当选择 sidebar 主题时有效）
+\title[中期考核]{中期考核\\[2mm] }
+\author[陈麒名]{汇报人：陈麒名\\[5mm] 导师：王国长 教授}
+\institute[统计与数据科学系]{\normalsize  专业：应用统计}
+% \date{\vskip -10pt \today}
+\date{2025年11月24日} % 修改为明天的日期
+
+% 开始写文章
+\begin{document}
+
+% 标题页
+\begin{frame}
+	\maketitle
+\end{frame}
+
+% 目录页
+\section*{目录}
+
+\frame{
+  \huge
+  \frametitle{\insertsection}
+  \tableofcontents[hideallsubsections]
+  \vspace{0.5cm}
+}
+
+% % 目录页
+% \section*{目录}
+
+% \frame{
+%   \frametitle{\insertsection}
+%   \setbeamerfont{section in toc}{size=\normalsize} % 设置目录条目字体大小为 normalsize
+%   \setlength{\itemsep}{0pt} % 减少目录条目之间的间距
+%   \tableofcontents[hideallsubsections]
+%   \vspace{0.5cm}
+% }
+
+
+\section{论文进度}
+
+\subsection{开题答复}
+\begin{frame}{开题答复-已解决}
+  \hspace{2em} \Large 已解决的的问题
+  \begin{enumerate}
+  \item 将标题修改为HTCLN模型的时间序列预测研究
+  \item 将计算机代码转化为统计学公式
+  \item 明确模型效率衡量指标
+  \end{enumerate}
+
+\end{frame}
+
+\subsection{目前进度}
+\begin{frame}{目前进度}
+  \hspace{2em} \Large 已完成事项
+  \begin{enumerate}
+  \item 数据模拟实验
+  \item 数据整理
+  \item 论文整体初步写作
+  \item 模型参数估计的算法与结果
+  \end{enumerate}
+
+\end{frame}
+
+\subsection{需要解决的问题}
+\begin{frame}{问题清单}
+  \hspace{2em} \Large 题清单
+  \begin{enumerate}
+  \item 论文写作思路
+  \item 数据描述方法
+  \item 模型效率与预测效果的评价
+  \item 参考文献引用修改
+  \end{enumerate}
+
+\end{frame}
+
+
+
+
+\section{论文概述}
+\begin{frame}{论文背景}
+\hspace{2em}时间序列预测作为数据科学领域的重要研究内容，其核心目标是深入剖析时序数据中的动态变化特征与潜在规律，
+通过构建高精度的预测模型实现对未来趋势的准确预测。\\
+
+\begin{enumerate}
+  \item 金融领域，股票价格趋势的精准预测有助于投资者构建风险对冲策略
+  \item 智能交通系统中，交通流量与拥堵状态的预测为动态交通管理及城市路网规划提供科学依据
+  \item 气象科学领域，通过对温度、降水、风速等气象要素的时序建模与预测，能够有效提升极端天气预警的时效性
+  \item 宏观经济研究中，GDP 增长率、通货膨胀率等关键经济指标的预测结果，可为政府经济调控政策的制定及企业战略规划提供重要参考
+\end{enumerate}
+
+\end{frame}
+
+\begin{frame}{问题表述}
+  \hspace{2em} 
+  本论文的研究目标为寻找一个合适的映射函数使得预测值与真实值最接近，现给定一个多元时间序列数据集$\boldsymbol{X}_{\mathrm{dataset}}=(\boldsymbol{X}_1,\boldsymbol{X}_2,...,\boldsymbol{X}_N)^T\in \mathbb{R} ^{N\times M}$ ，
+  其中N表示数据集的长度，即时间总长度；M表示每个时间步的特征数量。
+  对于其中任意一个时间t有一维向量$\boldsymbol{X}_t=(x_{t1},x_{t2},...,x_{tM})\in \mathbb{R} ^M$ 代表给定时间上的数据，其中目标变量$y_t$ 选择为$y_{\boldsymbol{t}}=x_{\boldsymbol{tl}}$ ，
+  其中$l\in \left[ 1,M \right] $ ，预测流程是给定过去t个时间步的输入数据，预测未来不同时间步t+h内的目标变量值，
+  其中h取值为1至24。由此，目标函数可表示为：
+	\begin{equation}
+  \hat{y}_{t+h}=f\left( X_1,X_2,...,X_t,\text{预测步长}=h \right)
+  \end{equation}
+
+\end{frame}
+
+
+\begin{frame}{研究步骤}
+\hspace{2em} \normalsize 针对多元时间序列中变量间存在的空间关联特性，本文采用卷积运算提取其空间特征。具体实现方案为：在预处理阶段，首先将原始时间序列重构为二维图像表示形式。
+随后对各特征维度的数据进行标准化处理，其数学表达式为：
+	\begin{equation}
+  \widehat{x}_i=\frac{x_i-\mu}{\sqrt{\sigma ^2+\varepsilon}}
+  \end{equation}
+  \hspace{2em} 其中 $\varepsilon $设置为10的负5次方，为了防止归一化后的分母接近0导致数值太大，μ为该特征的均值，σ为该特征的方差。
+  每个时间步的一维观测数据 $\boldsymbol{X}_t=(x_{t1},x_{t2},...,x_{tM})\in \mathbb{R} ^M$将被转为为二维矩阵 $\boldsymbol{x}^t\in \mathbb{R} ^{\boldsymbol{p}\times \boldsymbol{p}}$，
+  其中$p\times p>m$ ，其中p的选取由下列式子决定：
+  \begin{equation}
+  p=\begin{cases}
+	\sqrt{M},&		\sqrt{M}\in \mathbb{N} ^*\\
+	\lceil \sqrt{M} \rceil ,&		\sqrt{M}\notin \mathbb{N} ^*\\
+\end{cases}
+  \end{equation}
+\end{frame}
+
+\begin{frame}{研究步骤}
+\hspace{2em} 
+剩余的空白区域用零填充补全，并且考虑到后续使用卷积核进行采样时，边缘的特征将可能遗漏或检索不全，所以使用0做一阶上采用进行边缘填补，转换后第t个时间步上的数据为：
+ \begin{equation}
+\boldsymbol{X}\prime _t=\left[ \begin{matrix}
+	0&		0&		0&		0&		0\\
+	0&		x_1&		\cdots&		x_p&		0\\
+	0&		\vdots&		\ddots&		\vdots&		0\\
+	0&		x_M&		0&		0&		0\\
+	0&		0&		0&		0&		0\\
+\end{matrix} \right] \in \mathbb{R} ^{p\times p}
+  \end{equation}
+\hspace{2em}  传统卷积神经网络通常采用固定尺寸的卷积核，其局限性主要体现在两个方面：一方面，单一尺度的卷积核难以适应变量间空间异构性的需求；
+另一方面，在处理高维或具有复杂结构的多元时间序列时，固定感受野的设定会限制模型对多层次空间关联的捕捉能力。
+\end{frame}
+
+
+\begin{frame}{研究步骤}
+\hspace{2em} 
+本文改进设计了多核卷积模块，该模块通过并行部署多个具有不同尺寸的卷积核，通过尝试适配多个1×1、3×3、5×5等卷积核，实现了感受野的动态扩展。
+这种设计不仅增强了模型对空间异质性的适应能力，还有效提升了在复杂拓扑结构下的预测鲁棒性。
+其中处理后的数据可表达为$\boldsymbol{X}\prime =\left( \boldsymbol{X}\prime _1,\boldsymbol{X}\prime _2,...,\boldsymbol{X}\prime _{\boldsymbol{t}_{\boldsymbol{w}}} \right) ^{\boldsymbol{T}}$ ，
+则整体数据输入的向量维度可表示为（ $\mathrm{t}_{\mathrm{w}}$,H,W）,  代表滑动窗口的长度，H表示二维向量的高度，W则为二维向量的宽度。同时，本文通过调整卷积层的填充和步长实现，确保多分支输出的维度一致性，根据输出尺寸计算公式如下：
+\begin{equation}
+W_{out}=\frac{W_{in}-K+2P}{S}+1
+\end{equation}
+\end{frame}
+
+
+\begin{frame}{研究步骤}
+\hspace{2em} \normalsize 若是在一般情况下通过多核卷积操作后该数据的整体输出维度可表示成（$\mathrm{t}_{\mathrm{w}}$ ,C，H,W），其中C为通道数量，本文研究的通道数量默认为1，即表示成（ ,H-1）的形式，为了体现时间步信息的重要性，本文针对每个时间步均采用多核卷积模块进行处理，
+如下图所示，并且对池化层采用4×4的形式选择平均池化，以此减少某些特征的过大或者过小导致的采样不均衡。
+  \begin{figure}
+    \includegraphics[width=0.4\linewidth]{cnnconv.jpg}
+    \caption{多核卷积示意图}
+  \end{figure}
+\end{frame}
+
+\begin{frame}{研究步骤}
+\hspace{2em} 
+接下来对使用Transformer的编码层与LSTM网络的结合构建编码器，用以提取长输入序列中的时间特征，并且在编码器模块之间设置跳跃链接，用于防止层数过多导致的梯度爆炸或者梯度消失的问题。
+Transformer编码器架构包含四个核心组件：位置编码模块、维度映射模块、多头注意力机制以及前馈网络。
+所有头的输出通过矩阵按列拼接操作Concat(·)整合后乘上一个可调整参数的全连接层$\boldsymbol{W}_0$ 进行线性变换，最终得到注意力输出：
+\begin{equation}
+X_a=Concat\left( A_1,A_2,...,A_H \right) \boldsymbol{W}_0
+\end{equation}
+\end{frame}
+
+
+\begin{frame}{研究步骤}
+\hspace{2em} 
+该输出维度严格保持与输入一致，确保后续网络层的兼容性。这种分层设计既实现了多尺度特征提取，又通过参数共享机制降低了模型复杂度。得到注意力输出后，下面需要进一步标准化和为防止梯度问题进行残差连接，首先对 进行残差连接后使用层归一化进行标准化处理，然后连接全连接层通过ReLU激活函数，并再次经过一层全连接层，保证两次的全连接层维度相同，本文默认选择512个隐藏层，
+最后再进行残差连接和归一化，若是使用R \& N(·)表示残差连接和归一化、F(·)表示全连接，则得到的结果可以用如下式子表示：
+\begin{equation}
+\boldsymbol{X}_T=R\&N\left( F_2\left( \mathrm{ReLU}\left( F_1\left( R\&N\left( X_{\mathrm{atten}} \right) \right) \right) \right) \right)
+\end{equation}
+
+\end{frame}
+
+
+\begin{frame}{研究步骤}
+\hspace{2em}  \normalsize 后经过LSTM模型和归一化层即可得到编码层的最终输出结果，在每一个时间步，LSTM单元接收当前时刻的输入以及上一时刻的隐藏状态（即短期记忆）和细胞状态（即长期记忆），并利用这三个门控结构——输入门、遗忘门和输出门——协同筛选和更新信息，从而实现对关键时序特征的自适应提取。
+本文以LSTM(·)替代所得数据经过LSTM网络的处理,得到编码层的输出结果为$\boldsymbol{X}_{\boldsymbol{out}}=R\&N\left( LSTM\left( \boldsymbol{X}_T \right) \right) $ 。为了得到不同初始化下的编码结果，本文选择不止一个编码器层，
+目前假定编码器个数为5个，即得到 $X_{out_1},X_{out_2},X_{out_3},X_{out_4},X_{out_5}$的输出结果。
+
+  \begin{figure}
+    \includegraphics[width=0.4\linewidth]{lstmshiyi.jpg}
+    \caption{LSTM结构示意图}
+  \end{figure}
+
+\end{frame}
+
+\begin{frame}{研究步骤}
+\hspace{2em} 本文将TCLN模型的预测输出分解为非线性部分与线性部分的混合形式，并通过引入自回归模型补充线性趋势建模，从而构建更完整的特征表达体系。
+该混合模型巧妙融合了非线性与线性建模的优势，非线性部分能精准捕捉变量间的复杂关联模式，而线性部分则通过自回归机制有效提取目标变量的长期趋势特征，二者形成自然互补。
+该混合模型巧妙融合了非线性与线性建模的优势，非线性部分能精准捕捉变量间的复杂关联模式，而线性部分则通过自回归机制有效提取目标变量的长期趋势特征，二者形成自然互补。
+自回归模型计算公式如下：
+\begin{equation}
+\hat{y}_t=\sum_{i=1}^t{\phi _iy_{t-i}}+\varepsilon _t
+\end{equation}
+
+\end{frame}
+
+
+\begin{frame}{研究步骤}
+\hspace{2em} 本文将TCLN网络与自回归模型的输出结果进行按行拼接，通过在原本TCLN输出的结果的基础上扩展为一维向量 $\boldsymbol{Y}_{\boldsymbol{p}}=\left( X_{out_1},X_{out_2},X_{out_3},X_{out_4},X_{out_5},\hat{y}_t \right) ^T$。
+为消除负值对预测结果的干扰，同时实现计算简化和矩阵稀疏化处理，该方法引入了两阶段处理机制：第一阶段采用ReLU激活函数对拼接矩阵进行非线性处理，通过抑制负值元素实现特征选择；
+第二阶段执行Hadamard乘积运算，将经过ReLU处理的矩阵与原始矩阵进行逐元素相乘，这一操作不仅强化了正样本特征，还通过零值填充增强了矩阵的稀疏性。
+
+\end{frame}
+
+
+
+\begin{frame}{研究步骤}
+\hspace{2em} \small 通过flatten(·)操作将二维特征矩阵按行优先的顺序展平为一维向量。该展平过程并非简单的维度压缩，而是保留了特征间的拓扑关系。最终输出进行线性加权求和，其中可调节的权重矩阵 实现了对各子模型贡献度的动态校准。
+最终得到的结果如下：
+\begin{equation}
+\hat{Y}=\boldsymbol{W}\cdot flatten\left( \boldsymbol{Y}_{\boldsymbol{p}}\odot \mathrm{Re}LU\left( \boldsymbol{Y}_{\boldsymbol{p}} \right) \right) +\boldsymbol{b}
+\end{equation}
+
+  \begin{figure}
+    \includegraphics[width=0.5\linewidth]{HTCLN.jpg}
+    \caption{HTCLN模型示意图}
+  \end{figure}
+
+\end{frame}
+
+\begin{frame}{HTCLN模型示意图}
+  \begin{figure}
+    \includegraphics[width=1\linewidth]{HTCLN.jpg}
+    \caption{TPA-LSTM模型}
+  \end{figure}
+\end{frame}
+
+
+\section{对比模型概述}
+\subsection{对比模型概述}
+\begin{frame}{DA-RNN模型}
+\hspace{2em} DA-RNN模型
+  \begin{figure}
+    \includegraphics[width=1\linewidth]{DA-RNN.jpg}
+    \caption{DA-RNN模型}
+  \end{figure}
+\end{frame}
+
+
+\begin{frame}{DA-RNN模型}
+\hspace{2em} TPA-LSTM模型
+  \begin{figure}
+    \includegraphics[width=1\linewidth]{TPA-LSTM.png}
+    \caption{TPA-LSTM模型}
+  \end{figure}
+\end{frame}
+
+
+\begin{frame}{DA-Conv-LSTM模型}
+\hspace{2em} DA-Conv-LSTM模型
+  \begin{figure}
+    \includegraphics[width=1\linewidth]{DA-Conv-LSTM.png}
+    \caption{DA-Conv-LSTM模型}
+  \end{figure}
+\end{frame}
+
+
+\begin{frame}{StarHead模块}
+\hspace{2em} StarHead模块
+  \begin{figure}
+    \includegraphics[width=1\linewidth]{StarHead模块.png}
+    \caption{StarHead模块}
+  \end{figure}
+\end{frame}
+
+
+\begin{frame}{StarNet模型}
+\hspace{2em} StarNet模型
+  \begin{figure}
+    \includegraphics[width=1\linewidth]{StarNet.png}
+    \caption{StarNet模型}
+  \end{figure}
+\end{frame}
+
+
+
+\section{结果展示}
+\subsection{StarHead消融实验}
+\begin{frame}{StarHead消融实验}
+\hspace{2em} 分别选traffic和exchange_rate两个数据集根据stage的层数进行消融实验
+  \begin{figure}
+    \begin{minipage}[c]{0.48\linewidth}
+      \centering
+      \includegraphics[width=1\linewidth]{traffic_stage.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}[c]{0.48\linewidth}
+      \centering
+      \includegraphics[width=1\linewidth]{exchange_rate_stage.png}
+    \end{minipage}
+    \caption{StarHead模块消融实验对比} % 两张图片的总标题
+  \end{figure}
+\end{frame}
+
+
+\subsection{卷积层数对于StarHead的消融实验}
+\begin{frame}{卷积层数对于StarHead的消融实验}
+\hspace{2em} 分别选traffic和exchange_rate两个数据集根据卷积的层数进行消融实验
+  \begin{figure}
+    \begin{minipage}[c]{0.48\linewidth}
+      \centering
+      \includegraphics[width=1\linewidth]{traffic_cnn.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}[c]{0.48\linewidth}
+      \centering
+      \includegraphics[width=1\linewidth]{exchange_rate_cnn.png}
+    \end{minipage}
+    \caption{卷积层数对于StarHead的消融实验对比} % 两张图片的总标题
+  \end{figure}
+\end{frame}
+
+\subsection{卷积层数对于StarHead的消融实验}
+\begin{frame}{卷积层数对于StarHead的消融实验}
+\hspace{2em} 分别选traffic和exchange_rate两个数据集根据卷积的层数进行消融实验
+  \begin{figure}
+    \begin{minipage}[c]{0.48\linewidth}
+      \centering
+      \includegraphics[width=1\linewidth]{traffic_cnn.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}[c]{0.48\linewidth}
+      \centering
+      \includegraphics[width=1\linewidth]{exchange_rate_cnn.png}
+    \end{minipage}
+    \caption{卷积层数对于StarHead的消融实验对比} % 两张图片的总标题
+  \end{figure}
+\end{frame}
+
+\subsection{各模型加入StarHead的消融实验}
+\begin{frame}{数据集electricity使用StarHead层替换全连接进行输出的效果表}
+\hspace{2em} 数据集electricity使用StarHead层替换全连接进行输出的效果表
+  \begin{table}
+    \includegraphics[width=1\linewidth]{electricity使用StarHead.png}
+    \caption{数据集electricity使用StarHead层替换全连接进行输出的效果表}
+  \end{table}
+\end{frame}
+
+\begin{frame}{数据集weather使用StarHead层替换全连接进行输出的效果表}
+\hspace{2em} 数据集weather使用StarHead层替换全连接进行输出的效果表
+  \begin{table}
+    \includegraphics[width=1\linewidth]{weather使用StarHead.png}
+    \caption{数据集weather使用StarHead层替换全连接进行输出的效果表}
+  \end{table}
+\end{frame}
+
+\begin{frame}{数据集ETTh2使用StarHead层替换全连接进行输出的效果表}
+\hspace{2em} 数据集ETTh2使用StarHead层替换全连接进行输出的效果表
+  \begin{table}
+    \includegraphics[width=1\linewidth]{ETTh2使用StarHead.png}
+    \caption{数据集ETTh2使用StarHead层替换全连接进行输出的效果表}
+  \end{table}
+\end{frame}
+
+\begin{frame}{数据集NASDAQ100使用StarHead层替换全连接进行输出的效果表}
+\hspace{2em} 数据集NASDAQ100使用StarHead层替换全连接进行输出的效果表
+  \begin{table}
+    \includegraphics[width=1\linewidth]{NASDAQ100使用StarHead.png}
+    \caption{数据集NASDAQ100使用StarHead层替换全连接进行输出的效果表}
+  \end{table}
+\end{frame}
+
+\begin{frame}{数据集sml2010使用StarHead层替换全连接进行输出的效果表}
+\hspace{2em} 数据集sml2010使用StarHead层替换全连接进行输出的效果表
+  \begin{table}
+    \includegraphics[width=1\linewidth]{sml2010使用StarHead.png}
+    \caption{数据集sml2010使用StarHead层替换全连接进行输出的效果表}
+  \end{table}
+\end{frame}
+
+\begin{frame}{数据集traffic使用StarHead层替换全连接进行输出的效果表}
+\hspace{2em} 数据集traffic使用StarHead层替换全连接进行输出的效果表
+  \begin{table}
+    \includegraphics[width=1\linewidth]{traffic使用StarHead.png}
+    \caption{数据集traffic使用StarHead层替换全连接进行输出的效果表}
+  \end{table}
+\end{frame}
+
+
+\subsection{各个模型在7个数据集上的对比图}
+\begin{frame}{electricity数据集320个特征变量}
+\hspace{2em} electricity数据集320个特征变量
+  \begin{table}
+    \includegraphics[width=1\linewidth]{electricity数据集320个特征变量.png}
+    \caption{electricity数据集320个特征变量}
+  \end{table}
+\end{frame}
+
+\begin{frame}{ETTh2数据集6个特征变量}
+\hspace{2em} ETTh2数据集6个特征变量
+  \begin{table}
+    \includegraphics[width=1\linewidth]{ETTh2数据集6个特征变量.png}
+    \caption{ETTh2数据集6个特征变量}
+  \end{table}
+\end{frame}
+
+\begin{frame}{exchange_rate数据集7个特征变量}
+\hspace{2em} exchange_rate数据集7个特征变量
+  \begin{table}
+    \includegraphics[width=1\linewidth]{exchange_rate数据集7个特征变量.png}
+    \caption{exchange_rate数据集7个特征变量}
+  \end{table}
+\end{frame}
+
+\begin{frame}{NASDAQ100数据集104个特征变量}
+\hspace{2em} NASDAQ100数据集104个特征变量
+  \begin{table}
+    \includegraphics[width=1\linewidth]{NASDAQ100数据集104个特征变量.png}
+    \caption{NASDAQ100数据集104个特征变量}
+  \end{table}
+\end{frame}
+
+\begin{frame}{sml2010数据集22个特征变量}
+\hspace{2em} sml2010数据集22个特征变量
+  \begin{table}
+    \includegraphics[width=1\linewidth]{sml2010数据集22个特征变量.png}
+    \caption{sml2010数据集22个特征变量}
+  \end{table}
+\end{frame}
+
+\begin{frame}{traffic数据集861个特征变量}
+\hspace{2em} traffic数据集861个特征变量
+  \begin{table}
+    \includegraphics[width=1\linewidth]{traffic数据集861个特征变量.png}
+    \caption{traffic数据集861个特征变量}
+  \end{table}
+\end{frame}
+
+
+\begin{frame}{weather数据集20个特征变量}
+\hspace{2em} weather数据集20个特征变量
+  \begin{table}
+    \includegraphics[width=1\linewidth]{weather数据集20个特征变量.png}
+    \caption{weather数据集20个特征变量}
+  \end{table}
+\end{frame}
+
+
+
+
+\section{模型代码文件}
+\subsection{模型代码文件}
+\begin{frame}{模型代码文件}
+\hspace{2em} 模型代码文件已经上传到GitHub，结构如下。当然目前还是私密状态，等发表后再公开。
+  \begin{figure}
+    \includegraphics[width=0.6\linewidth]{github.jpg}
+    \caption{代码文件}
+  \end{figure}
+\end{frame}
+
+
+\section{结论}
+
+\subsection{创新}
+\begin{frame}{创新}
+\hspace{2em} 一、使用StarHead模块代替全连接层的激活函数输出能够有效降低训练的误差，增加预测的精度和准确性，且在测试集上的MSE的表现比不加StarHead模块要好，同时其随着预测和推断步长的增加，训练效率会提高，甚至在大部分模型上，StarHead模块在64步长的预测训练效率上优于不加StarHead模块的模型。但是，由于StarHead模块的乘积特性，计算效率和计算乘数较大，因此在模型推断也就是预测阶段的效率并不高，但是也是随着预测步数的增加，其推断效率将接近于不加StarHead模块的模型。所以StarHead模块总体而已效果肯定比普通全连接激活函数的输出处理要好，并且在越长的步长推断上推断效率和训练效率越高。
+\hspace{2em} 二、本文所提出的HTCLN-P模型在各个数据集上的MSE都小于TCLN模型，并且所使用的数据处理——以数据的原本特征数作为通道数进行输入的方式，更加能够提取空间特征，所提出的新方法是在原有的TCLN模型基础上的创新，也是对于StarNet在所有模型普遍性运用上的创新，相信该方法未来一定能在时间序列上有更多的运用。
+
+\end{frame}
+
+
+\subsection{不足}
+\begin{frame}{不足}
+\hspace{2em}第一，模型超参数优化的自动化程度不足，跨场景自适应适配能力有待提升。本文模型的超参数选取基于固定实验场景的遍历测试，未形成自动化、自适应的超参数寻优框架，导致部分数据集上模型未能收敛至全局最优解；同时，HTCLN-V 在 861 维超高维特征的 Traffic 数据集上性能出现明显衰减，模型对不同维度、不同采样频率、不同非平稳程度时序数据集的自适应适配能力仍需优化。
+
+\hspace{2em}第二，模型可解释性研究存在明显短板。本文研究重心聚焦于模型预测精度的优化，未对 HTCLN 模型的内部决策机制进行深度拆解，未能量化分析多核卷积、多头注意力、StarHead 模块在特征提取中的贡献度，也未对模型关键特征的识别逻辑进行可视化验证，模型预测过程仍存在 “黑箱” 特性，不利于实际工程场景中的结果校验与机理分析。
+
+\hspace{2em}第三，实际工程场景的落地验证不充分。受硬件资源与数据获取条件限制，本文仅采用公开基准数据集完成模型性能验证，未在工业生产、金融实时交易、城市交通动态调度等真实业务场景中开展离线测试与在线部署验证；同时，未针对边缘端低算力设备完成模型的量化压缩与轻量化优化，模型在高并发、低延迟严苛要求下的工程适用性尚未得到充分验证。
+
+\hspace{2em}第四，超长期时序预测的性能未得到系统性验证。本文实验的最大预测步长为 64 步，未针对步长≥128 的超长期时序预测场景开展测试，模型在超长期序列中的长程依赖捕捉能力、误差累积控制能力尚未得到验证；面对非平稳性、随机性更强的超长期时序数据，模型的预测稳定性与鲁棒性仍需进一步评估。
+
+\end{frame}
+
+
+\subsection{展望}
+\begin{frame}{未来研究展望}
+\hspace{2em}第一，实现模型架构的自适应优化与轻量化升级。引入自动化机器学习（AutoML）技术，构建模型超参数的自适应寻优框架，实现模型结构、超参数对不同特性时序数据集的自动适配；同时结合模型剪枝、知识蒸馏、量化感知训练等轻量化技术，对 HTCLN 模型进行压缩优化，使其适配边缘端低算力设备的实时预测需求，平衡模型精度与推理效率。
+\hspace{2em}第二，深化模型可解释性研究。结合可解释人工智能（XAI）方法，通过注意力权重可视化、SHAP 与 LIME 特征贡献度量化、因果推断等手段，拆解 HTCLN 模型各模块的决策逻辑，揭示模型对时序数据关键趋势、周期特征的提取机制，打破模型的 “黑箱” 特性，为工程场景中的模型应用、结果校验与异常排查提供理论支撑。
+\hspace{2em}第三，拓展模型在实际工程场景的落地应用。采集工业设备运维、金融高频交易、智能交通路网调度、智慧能源管理等领域的真实业务数据，构建贴合实际场景的专用数据集，完成模型的离线测试与在线部署验证；同时针对实时预测场景优化模型推理流程，验证模型在高并发、低延迟需求下的工程适用性，推动研究成果从实验室向产业端转化。
+\hspace{2em}第四，优化超长期时序预测性能，拓展多模态融合应用边界。针对超长期时序预测任务，结合时序分解技术分离序列的趋势项、周期项与随机项，优化模型的长程依赖建模能力，降低超长期预测中的误差累积；同时探索将文本舆情、空间地理、图像等多模态信息融入时序预测模型，构建多模态融合的时序预测框架，拓展模型在复杂业务场景中的应用边界。
+\end{frame}
+
+
+
+\begin{frame}
+	\begin{center}
+    {\Huge Thanks for your attention!}
+    \vspace{1cm}
+
+    {\Huge 恳请专家批评指正！}
+  \end{center}
+\end{frame}
+
+% 结束文档撰写
+\end{document}

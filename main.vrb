@@ -1,0 +1,6 @@
+\frametitle{参考文献}
+\footnotesize
+  \begin{thebibliography}{99}
+    \bibitem{ref1} Author Name. \textit{Paper Title}. Journal Name, Year.
+    \bibitem{ref2} Another Author. \textit{Book Title}. Publisher, Year.
+  \end{thebibliography}
